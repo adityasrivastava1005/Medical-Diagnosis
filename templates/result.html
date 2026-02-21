@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MedAI Diagnose | AI Medical Report</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: #f0f6ff;
+      padding: 40px;
+      color: #0b1c2d;
+    }
+
+    .report {
+      background: white;
+      max-width: 850px;
+      margin: auto;
+      border-radius: 18px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #0a66c2, #00b3a4);
+      color: white;
+      padding: 30px 40px;
+    }
+
+    .header h2 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .header p {
+      opacity: 0.9;
+      margin-top: 6px;
+      font-size: 14px;
+    }
+
+    .content {
+      padding: 35px 40px;
+    }
+
+    .emergency {
+      background: #fee2e2;
+      color: #7f1d1d;
+      border-left: 6px solid #dc2626;
+      padding: 18px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-size: 18px;
+      margin-bottom: 14px;
+      color: #0a66c2;
+      font-weight: 700;
+    }
+
+    .condition {
+      margin-bottom: 18px;
+    }
+
+    .condition strong {
+      font-size: 15px;
+    }
+
+    .confidence {
+      float: right;
+      font-weight: 700;
+      color: #0a66c2;
+    }
+
+    .bar {
+      background: #e5efff;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-top: 6px;
+    }
+
+    .fill {
+      background: linear-gradient(to right, #0a66c2, #00b3a4);
+      color: white;
+      padding: 8px 12px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .specialist {
+      background: #ecfeff;
+      border-left: 6px solid #06b6d4;
+      padding: 18px;
+      border-radius: 10px;
+      margin-top: 30px;
+      font-size: 15px;
+    }
+
+    .specialist strong {
+      color: #0a66c2;
+    }
+
+    .summary {
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      padding: 18px;
+      border-radius: 10px;
+      margin-top: 25px;
+      font-size: 14px;
+      color: #374151;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 25px 40px;
+      background: #f1f5f9;
+      font-size: 13px;
+      color: #475569;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 12px;
+      background: #0a66c2;
+      color: white;
+      padding: 10px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back-btn:hover {
+      background: #084f99;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="report">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h2>🧠 MedAI Diagnose — AI Medical Report</h2>
+    <p>AI-assisted preliminary health assessment</p>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    {% if emergency %}
+    <div class="emergency">
+      ⚠️ <strong>URGENT MEDICAL ALERT</strong><br>
+      Your symptoms indicate a potential medical emergency.
+      Please seek immediate medical attention or visit the nearest hospital.
+    </div>
+    {% endif %}
+
+    <div class="section-title">Most Probable Conditions</div>
+
+    {% for disease, conf in top3 %}
+    <div class="condition">
+      <strong>{{ disease }}</strong>
+      <span class="confidence">{{ conf }}%</span>
+
+      <div class="bar">
+        <div class="fill" style="width: {{ conf }}%;">
+          Confidence: {{ conf }}%
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+    <div class="specialist">
+      👨‍⚕️ Recommended Specialist Consultation:<br>
+      <strong>{{ specialist }}</strong>
+    </div>
+
+    <div class="summary">
+      <strong>Clinical Guidance:</strong><br>
+      Based on AI analysis of your reported symptoms, the above conditions
+      show the highest statistical likelihood. This system is designed to
+      assist in early screening and decision support only.
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    ⚠️ Medical Disclaimer: This AI system is for educational and assistive purposes only.
+    It does NOT replace professional medical diagnosis or treatment.<br>
+
+    <a href="/" class="back-btn">🔙 Run New Diagnosis</a>
+  </div>
+
+</div>
+
+</body>
+</html>
+

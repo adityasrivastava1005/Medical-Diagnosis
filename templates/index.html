@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MedAI Diagnose | Intelligent Healthcare Screening</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #0a66c2;
+      --secondary: #00b3a4;
+      --bg: #f5faff;
+      --dark: #0b1c2d;
+      --muted: #6b7280;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+    }
+
+    /* ================= HEADER ================= */
+    header {
+      background: white;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+      padding: 18px 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .brand .logo {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+    }
+
+    nav a {
+      margin-left: 28px;
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+    }
+
+    .nav-btn {
+      background: var(--primary);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
+    /* ================= HERO ================= */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 48px;
+      padding: 90px 64px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 54px;
+      line-height: 1.12;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      margin-top: 30px;
+      display: flex;
+      gap: 18px;
+    }
+
+    .primary-btn {
+      background: var(--primary);
+      color: white;
+      padding: 14px 30px;
+      border-radius: 10px;
+      border: none;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .secondary-btn {
+      background: white;
+      border: 1px solid #dbeafe;
+      color: var(--primary);
+      padding: 14px 30px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .hero-card {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 14px 50px rgba(0,0,0,0.1);
+    }
+
+    .trust-badges {
+      display: flex;
+      gap: 18px;
+      margin-top: 26px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: #ecf4ff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    /* ================= STATS ================= */
+    .stats {
+      background: white;
+      padding: 60px 64px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    }
+
+    .stat h3 {
+      font-size: 42px;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .stat p {
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* ================= FEATURES ================= */
+    .section {
+      padding: 80px 64px;
+    }
+
+    .section h2 {
+      text-align: center;
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    .section p.sub {
+      text-align: center;
+      color: var(--muted);
+      max-width: 620px;
+      margin: 0 auto 50px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 26px;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 18px;
+      padding: 32px;
+      box-shadow: 0 12px 36px rgba(0,0,0,0.08);
+    }
+
+    .feature-card h4 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    /* ================= TESTIMONIALS ================= */
+    .testimonials {
+      background: linear-gradient(to right, #0a66c2, #00b3a4);
+      padding: 80px 64px;
+      color: white;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+      margin-top: 40px;
+    }
+
+    .testimonial {
+      background: rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 28px;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .testimonial strong {
+      display: block;
+      margin-top: 14px;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    /* ================= FOOTER ================= */
+    footer {
+      background: #071629;
+      color: #cbd5e1;
+      padding: 60px 64px;
+    }
+
+    footer .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    footer h4 { color: white; margin-bottom: 12px; }
+
+    footer a {
+      display: block;
+      color: #cbd5e1;
+      text-decoration: none;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    .footer-bottom {
+      margin-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 18px;
+      font-size: 13px;
+      text-align: center;
+      color: #94a3b8;
+    }
+
+    @media (max-width: 900px) {
+      .hero, .features, .testimonial-grid, .stats, footer .grid {
+        grid-template-columns: 1fr;
+      }
+
+      header, .hero, .section, .stats, .testimonials, footer {
+        padding: 30px 24px;
+      }
+
+      .hero h1 { font-size: 40px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">
+    <div class="logo">+</div>
+    MedAI Diagnose
+  </div>
+  <nav>
+    <a href="#features">Services</a>
+    <a href="#reviews">Patient Stories</a>
+    <a href="/"><span class="nav-btn">Start Diagnosis</span></a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>Advanced AI Healthcare<br>for Smarter Diagnosis</h1>
+    <p>
+      A next-generation intelligent medical screening platform designed to assist
+      patients with fast, accurate, and data-driven health insights.
+    </p>
+
+    <div class="hero-actions">
+      <a href="/" class="primary-btn">Check Your Symptoms</a>
+      <a href="#features" class="secondary-btn">Explore Services</a>
+    </div>
+
+    <div class="trust-badges">
+      <div class="badge">AI-Powered</div>
+      <div class="badge">Clinically Inspired</div>
+      <div class="badge">Secure & Private</div>
+      <div class="badge">Fast Results</div>
+    </div>
+  </div>
+
+ <div class="hero-card">
+  <h3>Start AI Diagnosis</h3>
+
+  <form action="/predict" method="post">
+
+    <label>Enter Symptoms:</label>
+    <input type="text" name="symptoms" placeholder="e.g. fever, cough, headache" required
+           style="width:100%; padding:12px; margin:10px 0; border-radius:8px; border:1px solid #ccc;">
+
+    <button type="submit" class="primary-btn" style="width:100%; margin-top:10px;">
+      Run AI Diagnosis
+    </button>
+
+  </form>
+</div>
+
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stat">
+    <h3 data-count="25000">0</h3>
+    <p>Symptoms Analyzed</p>
+  </div>
+  <div class="stat">
+    <h3 data-count="98">0</h3>
+    <p>Prediction Accuracy (%)</p>
+  </div>
+  <div class="stat">
+    <h3 data-count="120">0</h3>
+    <p>Supported Conditions</p>
+  </div>
+  <div class="stat">
+    <h3 data-count="15">0</h3>
+    <p>Specialist Categories</p>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <h2>Our Healthcare Services</h2>
+  <p class="sub">Combining artificial intelligence with healthcare best practices.</p>
+
+  <div class="features">
+    <div class="feature-card">
+      <h4>AI Symptom Checker</h4>
+      <p>Quickly assess your health using intelligent symptom analysis.</p>
+    </div>
+    <div class="feature-card">
+      <h4>Disease Risk Prediction</h4>
+      <p>ML-powered probability-based disease detection.</p>
+    </div>
+    <div class="feature-card">
+      <h4>Specialist Guidance</h4>
+      <p>Get recommended doctors based on predicted condition.</p>
+    </div>
+    <div class="feature-card">
+      <h4>Emergency Alerts</h4>
+      <p>Immediate warnings for red-flag medical symptoms.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+  <h2>Patient Experiences</h2>
+  <p class="sub">What users say about MedAI Diagnose</p>
+
+  <div class="testimonial-grid">
+    <div class="testimonial">
+      “The AI diagnosis helped me decide to consult a cardiologist early.
+      It potentially saved me from serious complications.”
+      <strong>— Rahul Sharma, Delhi</strong>
+    </div>
+    <div class="testimonial">
+      “Very easy to use and professional. The symptom checker gave me
+      clarity before visiting a doctor.”
+      <strong>— Priya Mehta, Mumbai</strong>
+    </div>
+    <div class="testimonial">
+      “This platform feels like a real hospital website.
+      Very impressive for an AI-based health system.”
+      <strong>— Ankit Verma, Noida</strong>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="grid">
+    <div>
+      <h4>MedAI Diagnose</h4>
+      <p>AI-powered healthcare screening system for educational and assistive purposes.</p>
+    </div>
+    <div>
+      <h4>Platform</h4>
+      <a href="#">AI Engine</a>
+      <a href="#">Clinical Logic</a>
+      <a href="#">Security</a>
+    </div>
+    <div>
+      <h4>Resources</h4>
+      <a href="#">Documentation</a>
+      <a href="#">Research</a>
+      <a href="#">Support</a>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Medical Disclaimer</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 MedAI Diagnose. This system is for educational purposes and does not replace professional medical consultation.
+  </div>
+</footer>
+
+<!-- Animated Stats Script -->
+<script>
+  const counters = document.querySelectorAll('[data-count]');
+  counters.forEach(counter => {
+    const update = () => {
+      const target = +counter.getAttribute('data-count');
+      const current = +counter.innerText;
+      const increment = target / 120;
+
+      if (current < target) {
+        counter.innerText = Math.ceil(current + increment);
+        setTimeout(update, 20);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    update();
+  });
+</script>
+</body>
+</html>

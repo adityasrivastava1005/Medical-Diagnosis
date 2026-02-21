@@ -1,0 +1,278 @@
+:root {
+  --bg: #0f1c3d;
+  --card: rgba(255, 255, 255, 0.08);
+  --primary: #3b82f6;
+  --secondary: #6366f1;
+  --text: #f3f4f6;
+  --muted: #9ca3af;
+  --border: rgba(255,255,255,0.12);
+  --alert: #f87171;
+  --success: #34d399;
+}
+
+/* =========================
+   GLOBAL
+========================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: linear-gradient(to bottom, #0b1220, #050b18);
+  color: var(--text);
+}
+
+/* =========================
+   TOP BAR
+========================= */
+.topbar {
+  padding: 22px 48px;
+  background: rgba(5, 11, 24, 0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+.container {
+  max-width: 1200px;
+  margin: 70px auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 38px;
+}
+
+/* =========================
+   CARDS (GLASS EFFECT)
+========================= */
+.card {
+  background: var(--card);
+  backdrop-filter: blur(22px);
+  border-radius: 22px;
+  padding: 46px;
+  border: 1px solid var(--border);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+  animation: fadeUp 0.7s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+/* =========================
+   PRIMARY CARD
+========================= */
+.primary h1 {
+  font-size: 44px;
+  margin-bottom: 16px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--primary);
+}
+
+.subtitle {
+  font-size: 18px;
+  color: var(--muted);
+  max-width: 95%;
+  line-height: 1.6;
+}
+
+/* =========================
+   CONFIDENCE SECTION
+========================= */
+.confidence-ring {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 24px auto;
+}
+
+.confidence-ring svg {
+  transform: rotate(-90deg);
+}
+
+.confidence-ring circle {
+  fill: none;
+  stroke-width: 12;
+  stroke: rgba(255,255,255,0.1);
+  r: 52;
+  cx: 60;
+  cy: 60;
+}
+
+.confidence-ring circle:nth-child(2) {
+  stroke: var(--primary);
+  stroke-dasharray: 326;
+  stroke-dashoffset: calc(326 - (326 * var(--value)) / 100);
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+.ring-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* =========================
+   DOCTOR BOX
+========================= */
+.doctor-box {
+  margin-top: 28px;
+  padding: 22px;
+  border-radius: 16px;
+  background: rgba(11, 18, 32, 0.75);
+  backdrop-filter: blur(18px);
+  border: 1px solid var(--border);
+}
+
+.doctor-box span {
+  display: block;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.doctor-box strong {
+  font-size: 22px;
+  margin-top: 6px;
+  display: block;
+  color: var(--primary);
+}
+
+/* =========================
+   SYMPTOMS (CHIPS)
+========================= */
+.symptom-list, .symptom-chips {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.symptom-list li, .symptom-chips li {
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  font-size: 15px;
+  color: var(--text);
+}
+
+.symptom-list li.muted, .symptom-chips li.muted {
+  color: var(--muted);
+  background: rgba(255,255,255,0.05);
+}
+
+/* =========================
+   OTHER CONDITIONS
+========================= */
+.full {
+  grid-column: 1 / -1;
+}
+
+.conditions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.conditions li {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 0;
+  font-size: 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* =========================
+   ALERTS
+========================= */
+.alert {
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 14px;
+  background: var(--alert);
+  color: white;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* =========================
+   BUTTONS (GLASS STYLE)
+========================= */
+.confirm-actions, .action-buttons {
+  display: flex;
+  gap: 16px;
+  margin-top: 26px;
+}
+
+.primary-btn, .confirm.yes {
+  padding: 14px 28px;
+  border-radius: 16px;
+  border: none;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  backdrop-filter: blur(14px);
+}
+
+.secondary-btn, .confirm.no, .subtle-btn {
+  padding: 14px 28px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.08);
+  color: var(--text);
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  backdrop-filter: blur(14px);
+}
+
+.primary-btn:hover, .secondary-btn:hover, .confirm:hover, .subtle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+}
+
+/* =========================
+   DISCLAIMER
+========================= */
+.disclaimer {
+  grid-column: 1 / -1;
+  margin-top: 18px;
+  font-size: 14px;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+    margin: 40px auto;
+  }
+
+  .primary h1 {
+    font-size: 36px;
+  }
+}
